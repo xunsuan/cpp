@@ -25,12 +25,10 @@ int main(int argc, char** argv)
     int num = 0;
     int sum = 0;
     int opt_idx = 1;
-    for (; opt_idx < argc; opt_idx++)
+    for (; opt_idx < argc && *argv[opt_idx] == '-'; opt_idx++)
     {
-        if (argv[opt_idx][0] != '-')
-            break;
-
-        if (!strcmp(argv[opt_idx], "--auto")) // 检测到 --auto 参数
+        if (strcmp(argv[opt_idx], "--auto") == 0 ||
+            strcmp(argv[opt_idx], "-a") == 0)
         {
             std::cout << "--auto" << std::endl;
         } else if (!strcmp(argv[opt_idx], "--sum")) // 同上,只不过这个可以传值
